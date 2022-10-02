@@ -77,7 +77,11 @@ return require('packer').startup(function(use)
         'L3MON4D3/LuaSnip',
         config = function()
           require('configfiles.plugins.lsp.nvim-cmp')
-        end
+          require('luasnip.loaders.from_snipmate').lazy_load()
+        end,
+        requires = {
+          'honza/vim-snippets'
+        }
        }
     }
   }
@@ -105,7 +109,6 @@ return require('packer').startup(function(use)
   use 'junegunn/vim-easy-align'
   use 'AndrewRadev/splitjoin.vim'
   use 'myusuf3/numbers.vim'
-  -- vim.cmd 'let g:numbers_exclude_buftype = [ "terminal" ] '
 
   use 'tpope/vim-eunuch'
   use 'mbbill/undotree'
