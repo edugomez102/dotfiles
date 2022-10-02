@@ -29,16 +29,14 @@ o.undofile = true
 o.swapfile = false
 
 
--- Better buffer splitting
+--- Buffer split
 o.splitright = true
--- o.splitbelow = true
-
 
 g.mapleader = ' '
 g.maplocalleader = ' '
 
--- vim.opt.list = true
--- vim.opt.listchars = { "trail:⌁" }
+o.termguicolors = true
+
 -- vim.opt.listchars:append "trail:⌁"
 -- vim.opt.listchars:append "tab:┊\"
 

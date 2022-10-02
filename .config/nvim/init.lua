@@ -2,4 +2,4 @@ require('configfiles.settings')
 require('configfiles.plugins')
 require('configfiles.keybinds')
 
-pcall(vim.cmd, 'colorscheme alchemist')
+pcall(vim.cmd, 'colorscheme everforest')
