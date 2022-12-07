@@ -1,17 +1,26 @@
-function install_nvim_pack()
-{
+#!/bin/sh
+
+function install_nvim_pack() {
   echo "Installing nvim packer"
   git clone --depth 1 https://github.com/wbthomason/packer.nvim\
   ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 }
 
-function link_dirs() {
-  echo "Linking dirs"
-  ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
-  ln -s ~/.dotfiles/.config/alacritty/ ~/.config/alacritty 
-  ln -s ~/.dotfiles/.config/nvim ~/.config
+function link_dotfile_dir() {
+  ln -s ~/.dotfiles/.config/$1 ~/.config/$1
+}
 
-  #needed for session save
+function link_dirs() {
+  echo "Linking files"
+  ln -s ~/.dotfiles/.gitconfig ~/.gitconfig
+
+  echo "Linking dirs"
+  link_dotfile_dir "alacritty"
+  link_dotfile_dir "nvim"
+  link_dotfile_dir "i3"
+  link_dotfile_dir "i3status"
+
+  #needed for nvim session save
   mkdir .local/share/nvim/session
 }
 
