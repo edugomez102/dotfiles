@@ -48,4 +48,10 @@ require('mini.jump').setup({
   },
 })
 
-vim.cmd 'hi MiniJump ctermbg=9 ctermfg=10'
+-- extra commands
+vim.cmd
+[[ 
+  hi MiniJump ctermbg=9 ctermfg=10
+
+  command! -nargs=1 MiniSessionWrite lua MiniSessions.write(<f-args>)
+]]

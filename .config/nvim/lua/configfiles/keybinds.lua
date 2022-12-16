@@ -10,6 +10,7 @@ map('n', 'k', 'gk')
 
 -- Exit terminal
 vim.cmd('tnoremap jk <c-\\><c-n>')
+vim.cmd('tnoremap JK <c-\\><c-n>')
 
 map('n', '<leader>w', ':w!<cr>')
 map('n', '<leader>tn', ':tabedit %<cr>')

@@ -35,10 +35,15 @@ o.splitright = true
 g.mapleader = ' '
 g.maplocalleader = ' '
 
-o.termguicolors = true
+-- o.termguicolors = true
 
+-- vim.opt.list = true
 -- vim.opt.listchars:append "trail:⌁"
 -- vim.opt.listchars:append "tab:┊\"
 
 vim.cmd 'autocmd FileType * setlocal formatoptions-=ro'
 
+vim.api.nvim_create_autocmd('BufWrite', {
+  pattern = "*.tex",
+  command = 'TexlabBuild'
+})

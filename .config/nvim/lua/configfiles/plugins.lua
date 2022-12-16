@@ -67,6 +67,12 @@ return require('packer').startup(function(use)
     }
   }
   require("nvim-lsp-installer").setup({})
+  -- use {}
+
+  use {
+    'Issafalcon/lsp-overloads.nvim',
+  }
+
 
   use {
     'hrsh7th/nvim-cmp',
@@ -100,10 +106,47 @@ return require('packer').startup(function(use)
       require('configfiles.plugins.indentline')
     end,
   }
+  use { 'anuvyklack/pretty-fold.nvim',
+    config = function()
+      require('pretty-fold').setup()
+      require('pretty-fold').ft_setup('lua', {
+        matchup_patterns = {
+          { '^%s*do$', 'end' }, -- do ... end blocks
+          { '^%s*if', 'end' },  -- if ... end
+          { '^%s*for', 'end' }, -- for
+          { 'function%s*%(', 'end' }, -- 'function( or 'function (''
+          {  '{', '}' },
+          { '%(', ')' }, -- % to escape lua pattern char
+          { '%[', ']' }, -- % to escape lua pattern char
+        }
+      })
+
+    end
+  }
+
+  use {
+    'mfussenegger/nvim-dap',
+    -- requires = {
+    -- 'rcarriga/nvim-dap-ui'
+    -- }
+    config = function()
+      require('configfiles.plugins.dap')
+    end
+  }
+
+  use { 'ThePrimeagen/vim-be-good' }
+
+  use {
+    'ThePrimeagen/harpoon',
+    config = function()
+      require('harpoon').setup({})
+      require("telescope").load_extension('harpoon')
+    end
+  }
 
   -- Extra functions
   use 'tomtom/tcomment_vim'
-  use 'jiangmiao/auto-pairs'
+  -- use 'jiangmiao/auto-pairs'
   use 'sickill/vim-pasta'
   use 'tpope/vim-surround'
   use 'junegunn/vim-easy-align'
@@ -116,13 +159,31 @@ return require('packer').startup(function(use)
   -- Git
   use 'tpope/vim-fugitive'
   use 'rhysd/git-messenger.vim'
+  use {
+    'akinsho/git-conflict.nvim',
+    tag = "*",
+    config = function()
+      require('git-conflict').setup({
+        default_mappings = true, -- disable buffer local mapping created by this plugin
+        disable_diagnostics = true, -- This will disable the diagnostics in a buffer whilst it is conflicted
+        highlights = { -- They must have background color, otherwise the default color will be used
+          incoming = 'DiffText',
+          current = 'DiffAdd',
+        }
+      })
+    end
+  }
+
   use 'rbong/vim-flog'
   use 'mhinz/vim-signify'
   vim.g.signify_sign_change = '~'
+  vim.cmd "	highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE "
 
   use 'voldikss/vim-floaterm'
   vim.g.floaterm_wintype = 'split'
   vim.g.floaterm_height = 0.3
+  use 'edugomez102/vim-z80'
+  -- use 'rhysd/conflict-marker.vim'
 
   use {
     'echasnovski/mini.nvim',
