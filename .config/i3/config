@@ -22,7 +22,7 @@ bindsym $mod+Return exec alacritty
 bindsym $mod+q kill
 
 # rofi commands
-bindsym $mod+d exec "rofi -modi drun,combi -combi-modi drun,run -show combi -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
+bindsym $mod+d exec "rofi -modi drun,combi -combi-modi window,drun,run -show combi -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
 bindsym $mod+p exec "rofi -show window -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
 bindsym $mod+y exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
 
@@ -149,18 +149,7 @@ set $bg-color            #AFD700
 set $inactive-bg-color   #ffffff
 
 bar {
-        position bottom
-        i3bar_command i3bar -t
-        status_command i3status
-
-        colors {
-                background #303030AA
-                statusline #ffffff
-                focused_workspace #000000 $bg-color #000000
-                active_workspace #000000 #6666666 #ffffff
-                # inactive_workspace 
-                # urgent_workspace #aaaaaa #d33682 #fdf6e3
-        }
+  status_command SCRIPT_DIR=~/.dotfiles/.config/i3blocks-contrib i3blocks                              
 }
 
 # class                 border  backgr. text    indicator child_border
@@ -206,6 +195,8 @@ for_window [class="Clockify"] floating enable sticky enable
 for_window [class="putty"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Todoist"] floating enable
+# TODO
+for_window [class="googlecalendar-nativefier-e22938"] floating enable
 
 bindsym Print exec flameshot gui
 

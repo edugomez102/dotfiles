@@ -1,0 +1,107 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+# Change $SCRIPT_DIR to the location of your scripts!
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
+eparator_block_width=15
+markup=none
+
+[mediaplayer]
+instance=spotify
+interval=5
+signal=10
+
+[volume]
+label= 
+interval=once
+signal=10
+#STEP=5%
+
+# Guess the weather hourly
+[weather]
+command=curl -Ss 'https://wttr.in?0&T&Q' | cut -c 16- | head -2 | xargs echo
+interval=3600
+color=#A4C2F4
+
+# Disk usage
+#
+# The directory defaults to $HOME if the instance is not specified.
+# The script may be called with a optional argument to set the alert
+# (defaults to 10 for 10%).
+
+
+# Network interface monitoring
+#
+# If the instance is not specified, use the interface used for default route.
+# The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
+# [iface]
+# #IFACE=wlan0
+# color=#00FF00
+# interval=10
+# separator=true
+
+# Battery indicator
+#
+# The battery instance defaults to -1.
+# [battery]
+# label=BAT
+# #label=⚡
+# interval=29
+
+
+[cpu_usage2]
+markup=pango
+interval=persist
+color=#00ff2f
+
+[temperature]
+label=TEMP 
+interval=10
+
+[disk]
+label=💾 home 
+interval=30
+color=#C9E3DB
+separator=true
+
+[MEM]
+command=free -h | awk '/Mem:/ { printf("🐏%5s/%s \n", $3, $2) }'
+interval=1
+color=#FEC925
+
+[calendar]
+interval=1
+LABEL= 
+DATEFMT=+%Y-%m-%d %H:%M:%S
+HEIGHT=180
+WIDTH=220
+
+[kblayout]
+command=xkblayout
+interval=repeat
+
+[shutdown_menu]
+full_text=Quit
