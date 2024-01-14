@@ -79,7 +79,7 @@ color=#00ff2f
 
 [temperature]
 label=TEMP 
-interval=10
+interval=5
 
 [disk]
 label=💾 home 
@@ -101,7 +101,7 @@ WIDTH=220
 
 [kblayout]
 command=xkblayout
-interval=repeat
+interval=1
 
 [shutdown_menu]
 full_text=Quit

@@ -16,19 +16,21 @@ local on_attach = function(client, bufnr)
   end
 end
 
-require('lspconfig')['pyright'].setup{
-  on_attach = on_attach,
-  flags = lsp_flags,
-  capabilities = capabilities,
-}
 require('lspconfig')['clangd'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
-  cmd = { "clangd", "--completion-style=detailed" }
+  cmd = { "clangd", "--completion-style=detailed" },
+}
+
+require('lspconfig')['pyright'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
 
 }
-require('lspconfig')['sumneko_lua'].setup{
+-- https://luals.github.io/#neovim-install
+require('lspconfig')['lua_ls'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
@@ -60,6 +62,18 @@ require('lspconfig')['bashls'].setup{
   capabilities = capabilities,
 }
 require('lspconfig')['texlab'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require('lspconfig')['gopls'].setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  capabilities = capabilities,
+}
+
+require('lspconfig')['omnisharp'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,

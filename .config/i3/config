@@ -104,6 +104,18 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# move focused container to workspace and switch to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1; workspace number $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2; workspace number $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3; workspace number $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4; workspace number $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5; workspace number $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace number $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace number $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace number $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9; workspace number $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10; workspace number $ws10
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -149,7 +161,8 @@ set $bg-color            #AFD700
 set $inactive-bg-color   #ffffff
 
 bar {
-  status_command SCRIPT_DIR=~/.dotfiles/.config/i3blocks-contrib i3blocks                              
+  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks                              
+  # status_command i3status
 }
 
 # class                 border  backgr. text    indicator child_border
@@ -169,6 +182,9 @@ bindsym $Mod+G gaps inner current set 0 ; gaps outer current set 0
 bindsym $Mod+shift+G gaps inner current set 4 ; gaps outer current set 2
 
 bindsym $mod+Tab workspace back_and_forth
+
+# bindsym $mod+i workspace next
+# bindsym $mod+o workspace prev
 
 exec --no-startup-id feh --bg-fill ~/.wallpaper.jpg
 
@@ -195,30 +211,32 @@ for_window [class="Clockify"] floating enable sticky enable
 for_window [class="putty"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="Todoist"] floating enable
-# TODO
-for_window [class="googlecalendar-nativefier-e22938"] floating enable
+for_window [class="blueman-manager"] floating enable
+for_window [class="blueman-manager"] floating enable
 
 bindsym Print exec flameshot gui
 
 for_window [class="TelegramDesktop"] move to workspace $ws6
+for_window [class="obsidian"] move to workspace $ws3
 for_window [class="discord"] move to workspace $ws6
 for_window [class="Spotify"] move to workspace $ws7
-for_window [class="notion-app-enhanced"] move to workspace $ws8
+for_window [class="clickup"] move to workspace $ws8
 
 exec spotify
-exec notion-app-enhanced
+exec obsidian
 exec todoist
 exec greenclip daemon
+exec syncthing serve --no-browser
 
 # Workpace screens
-workspace 1 output DP-1
-workspace 2 output DP-1
-workspace 3 output DP-1
-workspace 4 output DP-1
-workspace 5 output DP-1
-workspace 6 output DP-1
-workspace 7 output DP-1
-workspace 8 output DP-1
+workspace 1 output HDMI-0
+workspace 2 output HDMI-0
+workspace 3 output HDMI-0
+workspace 4 output HDMI-0
+workspace 5 output HDMI-0
+workspace 6 output HDMI-0
+workspace 7 output HDMI-0
+workspace 8 output HDMI-0
 
-workspace 9 output HDMI-1
+workspace 9 output  HDMI-1
 workspace 10 output HDMI-1

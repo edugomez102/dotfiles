@@ -19,6 +19,8 @@ function link_dirs() {
   link_dotfile_dir "nvim"
   link_dotfile_dir "i3"
   link_dotfile_dir "i3status"
+  link_dotfile_dir "i3status-contrib"
+  # init submodule ...
 
   #needed for nvim session save
   mkdir .local/share/nvim/session
