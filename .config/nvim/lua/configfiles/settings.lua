@@ -14,6 +14,7 @@ vim.cmd 'set noshowmode'
 ----- 
 o.expandtab = true
 o.wrap = true
+o.breakindent = true
 o.autoindent = true
 o.tabstop = 2
 o.shiftwidth = 2
@@ -47,3 +48,13 @@ vim.api.nvim_create_autocmd('BufWrite', {
   pattern = "*.tex",
   command = 'TexlabBuild'
 })
+
+vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+  pattern = {'*.vs', '*fs'},
+  command = 'setf glsl'
+})
+
+-- filetypes
+-- vim.cmd [[
+--   au BufNewFile,BufRead   *.vs,*.fs,*.glsl   setf glsl
+-- ]]
