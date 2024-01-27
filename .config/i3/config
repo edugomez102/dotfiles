@@ -15,15 +15,20 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
 # start a terminal
-bindsym $mod+Return exec alacritty
+# bindsym $mod+Return exec alacritty
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+c kill
 
 # rofi commands
-bindsym $mod+d exec "rofi -modi drun,combi -combi-modi window,drun,run -show combi -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
-bindsym $mod+p exec "rofi -show window -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
+bindsym $mod+Return exec "rofi -modi drun,combi -combi-modi window,drun,run -show combi -icon-theme 'Papirus' -show-icons -kb-cancel 'Ctrl-c'"
 bindsym $mod+y exec "rofi -modi 'clipboard:greenclip print' -show clipboard -run-command '{cmd}'"
 
 # change focus
@@ -32,23 +37,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 # bindsym $mod+shift+v split h
@@ -125,30 +118,6 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 bindsym $mod+r mode "resize"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -183,8 +152,8 @@ bindsym $Mod+shift+G gaps inner current set 4 ; gaps outer current set 2
 
 bindsym $mod+Tab workspace back_and_forth
 
-# bindsym $mod+i workspace next
-# bindsym $mod+o workspace prev
+bindsym $mod+p workspace next
+bindsym $mod+n workspace prev
 
 exec --no-startup-id feh --bg-fill ~/.wallpaper.jpg
 
