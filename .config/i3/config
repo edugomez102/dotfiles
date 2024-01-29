@@ -161,8 +161,8 @@ set $bg-color            #AFD700
 set $inactive-bg-color   #ffffff
 
 bar {
-  status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks                              
-  # status_command i3status
+  # status_command SCRIPT_DIR=~/.config/i3blocks-contrib i3blocks                              
+  status_command i3status
 }
 
 # class                 border  backgr. text    indicator child_border
@@ -183,10 +183,10 @@ bindsym $Mod+shift+G gaps inner current set 4 ; gaps outer current set 2
 
 bindsym $mod+Tab workspace back_and_forth
 
-# bindsym $mod+i workspace next
-# bindsym $mod+o workspace prev
+bindsym $mod+i workspace prev
+bindsym $mod+o workspace next
 
-exec --no-startup-id feh --bg-fill ~/.wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/.NAX_wallpaper.png
 
 # exit i3
 bindsym $mod+shift+q exec "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'"
@@ -206,6 +206,7 @@ bindsym $mod+x [floating] move scratchpad
 
 for_window [window_role="pop-up"] floating enable
 
+for_window [class="matplotlib"] floating enable
 for_window [class="Nemo"] floating enable
 for_window [class="Clockify"] floating enable sticky enable
 for_window [class="putty"] floating enable
@@ -216,27 +217,23 @@ for_window [class="blueman-manager"] floating enable
 
 bindsym Print exec flameshot gui
 
-for_window [class="TelegramDesktop"] move to workspace $ws6
-for_window [class="obsidian"] move to workspace $ws3
-for_window [class="discord"] move to workspace $ws6
-for_window [class="Spotify"] move to workspace $ws7
-for_window [class="clickup"] move to workspace $ws8
+for_window [class="discord"] move to workspace $ws8
 
-exec spotify
-exec obsidian
-exec todoist
-exec greenclip daemon
-exec syncthing serve --no-browser
+# exec spotify
+# exec obsidian
+# exec todoist
+# exec greenclip daemon
+# exec syncthing serve --no-browser
 
 # Workpace screens
-workspace 1 output HDMI-0
-workspace 2 output HDMI-0
-workspace 3 output HDMI-0
-workspace 4 output HDMI-0
-workspace 5 output HDMI-0
-workspace 6 output HDMI-0
-workspace 7 output HDMI-0
-workspace 8 output HDMI-0
+workspace 1 output HDMI-1
+workspace 2 output HDMI-1
+workspace 3 output HDMI-1
+workspace 4 output HDMI-1
+workspace 5 output HDMI-1
+workspace 6 output HDMI-1
 
-workspace 9 output  HDMI-1
-workspace 10 output HDMI-1
+workspace 7 output  eDP-1
+workspace 8 output  eDP-1
+workspace 9 output  eDP-1
+workspace 10 output eDP-1
