@@ -77,7 +77,25 @@ return require('packer').startup(function(use)
 
   -- Telescope related plugins --
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        config = function()
+        local telescope = require("telescope")
+        telescope.setup({
+            pickers = {
+                live_grep = {
+                    file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+                    additional_args = function(_)
+                        return { "--hidden" }
+                    end
+                },
+                find_files = {
+                    file_ignore_patterns = { 'node_modules', '.git', '.venv' },
+                    hidden = true
+                }
+
+            },
+        })
+    end,
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
@@ -113,6 +131,25 @@ return require('packer').startup(function(use)
     'Issafalcon/lsp-overloads.nvim',
   }
 
+  use {
+    'nvimdev/lspsaga.nvim',
+    after = 'nvim-lspconfig',
+    config = function()
+        require('lspsaga').setup({
+          symbol_in_winbar = {
+            enable = true,
+            separator = ' › ',
+            hide_keyword = false,
+            ignore_patterns = nil,
+            show_file = true,
+            folder_level = 2,
+            color_mode = true,
+            dely = 300,
+          },
+
+        })
+    end,
+  }
 
   use {
     'hrsh7th/nvim-cmp',
@@ -126,7 +163,7 @@ return require('packer').startup(function(use)
           require('luasnip.loaders.from_snipmate').lazy_load()
         end,
         requires = {
-          'honza/vim-snippets'
+          'edugomez102/vim-snippets'
         }
        }
     }
@@ -164,15 +201,15 @@ return require('packer').startup(function(use)
   --   end
   -- }
 
-  use {
-    'mfussenegger/nvim-dap',
-    -- requires = {
-    -- 'rcarriga/nvim-dap-ui'
-    -- }
-    config = function()
-      require('configfiles.plugins.dap')
-    end
-  }
+  -- use {
+  --   'mfussenegger/nvim-dap',
+  --   -- requires = {
+  --   -- 'rcarriga/nvim-dap-ui'
+  --   -- }
+  --   config = function()
+  --     require('configfiles.plugins.dap')
+  --   end
+  -- }
 
   -- use { 'ThePrimeagen/vim-be-good' }
 
@@ -280,6 +317,9 @@ return require('packer').startup(function(use)
   hi default link UfoFoldedEllipsis Comment
   hi default link UfoCursorFoldedLine CursorLine
   ]])
+
+  -- use { 'averms/black-nvim' }
+
 
 
 end)

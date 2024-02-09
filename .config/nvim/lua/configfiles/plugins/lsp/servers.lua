@@ -27,8 +27,15 @@ require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
   flags = lsp_flags,
   capabilities = capabilities,
-
+  settings = {
+    python = {
+      analysis = {
+        typeCheckingMode = "basic"
+      }
+    },
+  }
 }
+
 -- https://luals.github.io/#neovim-install
 require('lspconfig')['lua_ls'].setup{
   on_attach = on_attach,

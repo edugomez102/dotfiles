@@ -26,12 +26,22 @@ map('i', 'JK', '<ESC>')
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 
+-- Search and replace in visual mode
+vim.cmd('vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>')
+
+-- Search exact word
+vim.cmd('nnoremap <leader>/ /\\<\\><left><left>')
+
 -- Exit terminal
 vim.cmd('tnoremap jk <c-\\><c-n>')
 vim.cmd('tnoremap JK <c-\\><c-n>')
 
+vim.cmd('tnoremap <Esc> <C-\\><C-n>')
+
+
 map('n', '<leader>w', ':w!<cr>')
 map('n', '<leader>tn', ':tabedit %<cr>')
+map('n', '<leader>tc', ':tabclose<cr>')
 
 --- Plugin
 map('n', '<leader>e', ':NvimTreeToggle<cr>')
@@ -40,14 +50,24 @@ map('n', '<C-J>', ':Telescope find_files<cr>')
 
 map('n', '<C-p>', ':Telescope oldfiles<cr>')
 map('n', '<C-h>', ':Telescope lsp_document_symbols<cr>')
+map('n', '<C-n>', ':Telescope lsp_dynamic_workspace_symbols<cr>')
+
+map('n', '<leader>gy', ':Telescope registers<cr>')
+
+map('n', '<leader>gl', ':Telescope live_grep<cr>')
+map('n', '<leader>gg', ':Telescope grep_string<cr>')
+
 
 map('n', '<leader>;', ':FloatermToggle<cr>')
 
 map('n', '<leader>s', ':lua require("spectre").open()<cr>')
 map('n', '<leader>sw', ':lua require("spectre").open_visual({select_word = true})<cr>')
+
+
 map('n', '<leader>hp', ':lua require("harpoon.mark").add_file()<cr>')
 
 map('n', '<leader>gh', ':SignifyHunkDiff<cr>')
+map('n', '<leader>gd', ':SignifyDiff<cr>')
 map('n', '<leader>gu', ':SignifyHunkUndo<cr>')
 
 map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
@@ -64,7 +84,8 @@ setToggleMap('n', 'U',
   {'tabedit % | UndotreeToggle',
   'UndotreeToggle | tabclose'})
 
-setToggleMap('n', '<leader>gs', {'tab Git', 'tabclose'})
+map('n', '<leader>gs', ':tab Git<cr>')
+map('n', '<leader>gz', ':Git add %<cr>')
 
 -- vim.cmd [[
 -- " name.s.h split len is 2

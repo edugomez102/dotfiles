@@ -10,6 +10,7 @@ o.number = true
 o.cursorline = true
 o.scrolloff = 4
 vim.cmd 'set noshowmode'
+vim.cmd 'set colorcolumn=80'
 
 ----- 
 o.expandtab = true
