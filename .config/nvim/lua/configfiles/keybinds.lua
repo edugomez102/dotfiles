@@ -29,6 +29,10 @@ map('n', 'k', 'gk')
 -- Search and replace in visual mode
 vim.cmd('vnoremap <C-r> "hy:.,$s/<C-r>h//gc<left><left><left>')
 
+-- " j, k          Store relative line number jumps in the jumplist.
+vim.keymap.set("n", "k", "(v:count > 5 ? 'm`' . v:count : '') . 'k'", { noremap = true, expr = true, silent = true })
+vim.keymap.set("n", "j", "(v:count > 5 ? 'm`' . v:count : '') . 'j'", { noremap = true, expr = true, silent = true })
+
 -- Search exact word
 vim.cmd('nnoremap <leader>/ /\\<\\><left><left>')
 
@@ -42,6 +46,7 @@ vim.cmd('tnoremap <Esc> <C-\\><C-n>')
 map('n', '<leader>w', ':w!<cr>')
 map('n', '<leader>tn', ':tabedit %<cr>')
 map('n', '<leader>tc', ':tabclose<cr>')
+map('n', '<leader>to', ':tabonly<cr>')
 
 --- Plugin
 map('n', '<leader>e', ':NvimTreeToggle<cr>')
